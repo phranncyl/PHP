@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <?php include "./head.html" ?>
 <?php
