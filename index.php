@@ -3,9 +3,7 @@
 <html lang="en">
 
 <?php include "./head.html" ?>
-<?php
-include_once("connection.php");
-?>
+
 <body>
   <section id="container">
   <?php include "./header.php" ?>
