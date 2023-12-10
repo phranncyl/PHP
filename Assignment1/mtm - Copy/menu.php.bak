@@ -1,0 +1,47 @@
+    <aside>
+      <div id="sidebar" class="nav-collapse">
+
+        <ul class="sidebar-menu" id="nav-accordion" style="display: none;">
+		<?php
+		$id_usuario = $_SESSION['usuarioId'];
+		$photo_dir = "SELECT dir_photo FROM usuarios WHERE id_usuario = ".$id_usuario." LIMIT 1";
+		$photo = mysqli_query($conn, $photo_dir);
+		$caminho_photo = mysqli_fetch_assoc($photo);
+		//var_dump($caminho_photo);
+		echo "<p class='centered'><a href='edit_usuario.php?id_usuario=$id_usuario'><img src='".$caminho_photo['dir_photo']."' class='img-circle' width='80'></a></p>";
+		?>
+         <!-- <p class="centered"><a href="profile.html"><img src="img/ui-sam.jpg" class="img-circle" width="80"></a></p> -->
+		  <h5 class='centered'>	<?php echo $_SESSION['usuarioNome'] . " - [" .  $_SESSION['usuarioUser'] . "]";?></h5> 
+		  
+		 
+          <li class="mt">
+            <a class="active" href="index.php">
+              <i class="fa fa-dashboard"></i>
+              <span>Dashboard</span>
+              </a>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-desktop"></i>
+              <span>Cadastros</span>
+              </a>
+            <ul class="sub">
+              <li><a href="list_usuario.php">Usuários</a></li>
+              <li><a href="list_motorista.php">Motoristas</a></li>
+              <li><a href="list_bairro.php">Bairros</a></li>
+              <li><a href="list_valores.php">Valores</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-cogs"></i>
+              <span>Corridas</span>
+              </a>
+            <ul class="sub">
+              <li><a href="list_corrida.php">Lista de Corridas</a></li>
+            </ul>
+          </li>
+        </ul>
+
+      </div>
+    </aside>
