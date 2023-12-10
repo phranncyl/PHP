@@ -1,6 +1,13 @@
 <?php
 include_once './connection.php';
+
+if(isset($_GET['delete'])) {
+	$id_user = $_GET['delete'];
+	
+	$resultdeleteuser = $database->delete_user($id_user);
+	}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,24 +42,23 @@ include_once './connection.php';
 		  <div class="col-lg-12">
             
 			<?php
-			
+
 			$result_users   = $database->list_user();
 			while($row_user = mysqli_fetch_assoc($result_users)){
 				echo "<tr>";
 				echo "<td>" . $row_user['id_user'] . "</td>";
-				echo "<td>" .  $row_user['name'] . "</td>";
-				echo "<td>" .  $row_user['email'] . "</td>";
+				echo "<td>" . $row_user['name'] . "</td>";
+				echo "<td>" . $row_user['email'] . "</td>";
 				if ($row_user['status'] == 'A'){
-					echo "<td  class='status-green' > <i class='fa fa-check-circle'></i>";
+					echo "<td  class='status-green' > <i class='fa fa-check-circle'></i> </td>";
 				}else {
-					echo "<td  class='status-red'> <i class='fa fa-times-circle'></i>";
+					echo "<td  class='status-red'> <i class='fa fa-times-circle'></i></td>";
 				}
 				
-				//echo "<div class='col-md-1'><a href='edit_user.php?id=" . $row_user['id_user'] . "' style = 'color:white'> <button type='button' class='btn btn-info'>Editar</a> </div>";
-				//echo "<div class='col-md-1'><a href='delete_user.php?id=" . $row_user['id_user'] . "'  style = 'color:white'> <button type='button' class='btn btn-danger'>Apagar</a> </div>";
-				echo "</tr>";
-			}
-			
+				echo "<td><a href='edit_user.php?id=" . $row_user['id_user'] . "' style = 'color:white'> <button type='button' class='btn btn-info'>Edit</a> </td>";
+				echo "<td><a href=list_user.php?delete=" . $row_user['id_user'] ." onclick=return confirm('Are you sure?'); return false;><button type='submit'class='btn btn-danger'>Delete </a></td>";
+				echo "</tr>";	
+			}			
 		?>	
 		
 		</tbody>

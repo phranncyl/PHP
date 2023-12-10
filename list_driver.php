@@ -60,8 +60,8 @@ include_once './connection.php';
 					echo "<td  class='status-red'> <i class='fa fa-times-circle'></i>";
 				}
 				
-				//echo "<div class='col-md-1'><a href='edit_driver.php?id=" . $row_user['id_user'] . "' style = 'color:white'> <button type='button' class='btn btn-info'>Editar</a> </div>";
-				//echo "<div class='col-md-1'><a href='delete_driver.php?id=" . $row_user['id_user'] . "'  style = 'color:white'> <button type='button' class='btn btn-danger'>Apagar</a> </div>";
+				echo "<div class='col-md-1'><a href='edit_driver.php?id=" . $row_user['id_user'] . "' style = 'color:white'> <button type='button' class='btn btn-info'>Editar</a> </div>";
+				echo "<div class='col-md-1'><a href='delete_driver.php?id=" . $row_user['id_user'] . "'  style = 'color:white'> <button type='button' class='btn btn-danger'>Apagar</a> </div>";
 				echo "</tr>";
 			}
 			

@@ -18,8 +18,8 @@ class Database{
 	public function list_user(){
 
 		$sql = "SELECT * FROM users;";
-		$result = mysqli_query($this->connection, $sql);
-		return $result;
+		$resultlistuser = mysqli_query($this->connection, $sql);
+		return $resultlistuser;
 	  }
 
     public function create_user($name,$email,$password, $status){
@@ -30,9 +30,9 @@ class Database{
 		
 
 		$sql = "insert into users(name, email, password, status) values ('".$name."', '".$email."', '".$password."','".$status."');";
-		$result = mysqli_query($this->connection, $sql);
+		$resultcreateuser = mysqli_query($this->connection, $sql);
 			//var_dump($result);
-			if($result){
+			if($resultcreateuser){
 				return true;	
 			 }
 			 else{
@@ -45,8 +45,8 @@ class Database{
 	public function list_driver(){
 
 		$sql = "SELECT * FROM drivers;";
-		$result = mysqli_query($this->connection, $sql);
-		return $result;
+		$resultlistdriver = mysqli_query($this->connection, $sql);
+		return $resultlistdriver;
 	  }
 
     public function create_driver($name,$nickname,$phone1,$phone2, $dob, $status){
@@ -59,17 +59,30 @@ class Database{
 		
 
 		$sql = "insert into drivers(name, nickname, phone1, phone2, birth_date, status) values ('".$name."', '".$nickname."', '".$phone1."','".$phone2."','".$dob."','".$status."');";
-		$result = mysqli_query($this->connection, $sql);
+		$resultcreatedriver = mysqli_query($this->connection, $sql);
 			//var_dump($result);
-			if($result){
+			if($resultcreatedriver){
 				return true;	
 			 }
 			 else{
 			   return false;
 			 }
+		}
 
+	public function delete_user($id_user){
+		$sql = "delete from users where id_user = ".$id_user.";";
+		$resultdeleteuser = mysqli_query($this->connection, $sql);
+	//var_dump($result);
+		if($resultdeleteuser){
+			echo('OK');
+			header("Location: list_user.php");	
+	 }
+	 else{
+	   return false;
+	 }
 	}
-    
-  }
+
+
+}
 $database = new Database();
 ?>
