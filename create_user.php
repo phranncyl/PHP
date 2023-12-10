@@ -3,7 +3,7 @@ include_once './connection.php';
 include_once './validate.php';
 ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <?php include "./head.html" ?>
 
